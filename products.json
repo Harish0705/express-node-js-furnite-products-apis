@@ -1,0 +1,131 @@
+[
+  {
+    "productName": "accent chair",
+    "productPrice": 25,
+    "productCompany": "Durian",
+    "productRating": 4
+  },
+  {
+    "productName": "albany sectional",
+    "productPrice": 109,
+    "productCompany": "Godrej",
+    "productRating": 5
+  },
+  {
+    "productName": "albany table",
+    "productPrice": 309,
+    "productCompany": "Godrej",
+    "productRating": 4.9
+  },
+  {
+    "productName": "armchair",
+    "productPrice": 125,
+    "productCompany": "Durian",
+    "productRating": 4.8
+  },
+  {
+    "productName": "bar stool",
+    "productPrice": 40,
+    "productCompany": "Godrej",
+    "productRating": 4.6
+  },
+  {
+    "productName": "dining table",
+    "productPrice": 42,
+    "productCompany": "IKEA",
+    "productRating": 4.55
+  },
+  {
+    "productName": "emperor bed",
+    "productPrice": 23,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "entertainment center",
+    "productPrice": 59,
+    "isProductfeatured": true,
+    "productCompany": "Ashley"
+  },
+  {
+    "productName": "high-back bench",
+    "productPrice": 39,
+    "isProductfeatured": true,
+    "productCompany": "IKEA"
+  },
+
+  {
+    "productName": "leather sofa",
+    "productPrice": 99,
+    "productCompany": "Ashley"
+  },
+  {
+    "productName": "modern bookshelf",
+    "productPrice": 31,
+    "isProductfeatured": true,
+    "productCompany": "Ashley"
+  },
+  {
+    "productName": "modern poster",
+    "productPrice": 30,
+    "productCompany": "Godrej"
+  },
+  {
+    "productName": "shelf",
+    "productPrice": 30,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "simple chair",
+    "productPrice": 109,
+    "productCompany": "Godrej"
+  },
+  {
+    "productName": "sofa set",
+    "productPrice": 129,
+    "productCompany": "Durian"
+  },
+  {
+    "productName": "suede armchair",
+    "productPrice": 15,
+    "productCompany": "Ashley"
+  },
+  {
+    "productName": "utopia sofa",
+    "productPrice": 79,
+    "isProductfeatured": true,
+    "productCompany": "Godrej"
+  },
+  {
+    "productName": "vase table",
+    "productPrice": 120,
+    "isProductfeatured": true,
+    "productCompany": "Durian"
+  },
+  {
+    "productName": "wooden bed",
+    "productPrice": 25,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "wooden desk",
+    "productPrice": 15,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "wooden desk",
+    "productPrice": 40,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "wooden table",
+    "productPrice": 23,
+    "isProductfeatured": true,
+    "productCompany": "Ashley"
+  },
+  {
+    "productName": "a first wooden table",
+    "productPrice": 23,
+    "isProductfeatured": true,
+    "productCompany": "Ashley"
+  }
+]
