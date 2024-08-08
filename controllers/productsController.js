@@ -1,8 +1,17 @@
 import { Product } from "../model/productsSchema.js";
 
 export const getAllProducts = async (req, res) => {
-  const { isProductfeatured, productCompany, productName, filterBy, sortBy, includeFields } =
-    req.query;
+  const {
+    isProductfeatured,
+    productCompany,
+    productName,
+    filterBy,
+    sortBy,
+    includeFields,
+    page,
+    limit,
+    offset
+  } = req.query;
   console.log({ "Request query": req.query });
   const queryObject = {};
   // search products based on featured status
@@ -61,9 +70,15 @@ export const getAllProducts = async (req, res) => {
 
   // select only particular fields example only product name and price
   if (includeFields) {
-    const fieldsList = includeFields.split(',').join(' ');
+    const fieldsList = includeFields.split(",").join(" ");
     productsResult = productsResult.select(fieldsList);
   }
+
+  const pageNumber = Number(page) || 1;
+  const documentLimit = Number(limit) || 10; // limit of the number of documents send
+  const documentOffset = offset || (pageNumber - 1) * limit; // skip those documents
+
+  productsResult = productsResult.skip(documentOffset).limit(documentLimit);
   const products = await productsResult;
   return res.status(200).json({ products, nbHits: products.length });
 };
