@@ -1,7 +1,7 @@
 import { Product } from "../model/productsSchema.js";
 
 export const getAllProducts = async (req, res) => {
-  const { isProductfeatured, productCompany, productName, numericFilters } =
+  const { isProductfeatured, productCompany, productName, filterBy, sortBy } =
     req.query;
   console.log({ "Request query": req.query });
   const queryObject = {};
@@ -18,7 +18,8 @@ export const getAllProducts = async (req, res) => {
     queryObject.productName = { $regex: productName, $options: "i" };
   console.log({ "query object productName": queryObject });
 
-  if (numericFilters) {
+  // Filter products based on price and rating
+  if (filterBy) {
     const vaildOperators = {
       ">": "$gt",
       ">=": "$gte",
@@ -26,23 +27,37 @@ export const getAllProducts = async (req, res) => {
       "<=": "$lte",
       "=": "$eq",
     };
+    const validOptions = ["productPrice", "productRating"];
     const regEx = /\b(<|>|>=|=|<|<=)\b/g;
     // replace user friendly operators to monogo db operators
-    // example: numericFilters=productPrice<=50,productRating>3 changes to numericFilters=productPrice-$lte-50,productRating-$gt-3
-    let filters = numericFilters.replace(
+    // example: filterBy=productPrice<=50,productRating>3 changes to filterBy=productPrice-$lte-50,productRating-$gt-3
+    let filters = filterBy.replace(
       regEx,
       (match) => `-${vaildOperators[match]}-`
     );
 
-    const validOptions = ["productPrice", "productRating"];
-    filters = filters.split(",").forEach((el) => {
+    filters.split(",").forEach((el) => {
       const [field, operator, value] = el.split("-");
       if (validOptions.includes(field))
         queryObject[field] = { [operator]: value };
+      console.log(filters);
     });
   }
-  console.log({ "query object numericFilters": queryObject });
+  console.log({ "query object filterBy": queryObject });
 
-  const products = await Product.find(queryObject);
+  let productsResult = Product.find(queryObject);
+
+  // implementing sorting
+  if (sortBy) {
+    // convert productName,productCompany to productName productCompany because the sort method takes arguments separated by space not comma.
+    const sortProducts = sortBy.split(",").join(" ");
+    productsResult = productsResult.sort(sortProducts);
+    // console.log(sortProducts)
+  } else {
+    // populate additional data to see the difference in created date
+    // by default sorted by created date
+    productsResult = productsResult.sort("productCreatedAt");
+  }
+  const products = await productsResult;
   return res.status(200).json({ products, nbHits: products.length });
 };

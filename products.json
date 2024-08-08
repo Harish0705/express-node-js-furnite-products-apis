@@ -127,5 +127,32 @@
     "productPrice": 23,
     "isProductfeatured": true,
     "productCompany": "Ashley"
+  },
+  {
+    "productName": "steel bed",
+    "productPrice": 75,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "steel desk",
+    "productPrice": 20,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "steel desk",
+    "productPrice": 35,
+    "productCompany": "IKEA"
+  },
+  {
+    "productName": "steel table",
+    "productPrice": 15,
+    "isProductfeatured": true,
+    "productCompany": "Ashley"
+  },
+  {
+    "productName": "a first steel table",
+    "productPrice": 18,
+    "isProductfeatured": true,
+    "productCompany": "Ashley"
   }
 ]
