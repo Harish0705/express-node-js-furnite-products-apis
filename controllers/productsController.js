@@ -1,7 +1,7 @@
 import { Product } from "../model/productsSchema.js";
 
 export const getAllProducts = async (req, res) => {
-  const { isProductfeatured, productCompany, productName, filterBy, sortBy } =
+  const { isProductfeatured, productCompany, productName, filterBy, sortBy, includeFields } =
     req.query;
   console.log({ "Request query": req.query });
   const queryObject = {};
@@ -57,6 +57,12 @@ export const getAllProducts = async (req, res) => {
     // populate additional data to see the difference in created date
     // by default sorted by created date
     productsResult = productsResult.sort("productCreatedAt");
+  }
+
+  // select only particular fields example only product name and price
+  if (includeFields) {
+    const fieldsList = includeFields.split(',').join(' ');
+    productsResult = productsResult.select(fieldsList);
   }
   const products = await productsResult;
   return res.status(200).json({ products, nbHits: products.length });
